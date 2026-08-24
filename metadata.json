@@ -1,0 +1,6 @@
+{
+  "name": "Himalayan Trail Co.",
+  "description": "Premium Himalayan trekking and expedition platform with interactive route guides, trip finder, and booking wizard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
