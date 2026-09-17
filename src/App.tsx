@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { AppProvider } from './context/AppContext';
+import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
@@ -30,10 +30,20 @@ export default function App() {
     <AppProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen flex flex-col bg-stone-950 text-stone-100 selection:bg-amber-500 selection:text-stone-950 font-sans antialiased">
-          <Navbar />
-          
-          <main className="flex-1">
+        <AppInner />
+      </Router>
+    </AppProvider>
+  );
+}
+
+function AppInner() {
+  const { theme } = useApp();
+
+  return (
+    <div className={`min-h-screen flex flex-col selection:bg-amber-500 selection:text-stone-950 font-sans antialiased ${theme === 'light' ? 'bg-white text-stone-900' : 'bg-stone-950 text-stone-100'}`}>
+      <Navbar />
+
+      <main className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/destinations" element={<Destinations />} />
@@ -49,8 +59,6 @@ export default function App() {
           </main>
 
           <Footer />
-        </div>
-      </Router>
-    </AppProvider>
+    </div>
   );
 }

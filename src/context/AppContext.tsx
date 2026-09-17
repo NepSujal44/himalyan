@@ -2,6 +2,9 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { CurrencyCode, AltitudeUnit, BookingRecord } from '../types';
 
 interface AppContextType {
+  theme: 'light' | 'dark';
+  setTheme: (t: 'light' | 'dark') => void;
+  toggleTheme: () => void;
   currency: CurrencyCode;
   setCurrency: (c: CurrencyCode) => void;
   formatPrice: (priceUSD: number) => string;
@@ -55,6 +58,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [theme, setThemeState] = useState<'light' | 'dark'>(() => {
+    try {
+      const stored = localStorage.getItem('htc_theme');
+      if (stored === 'light' || stored === 'dark') return stored;
+    } catch {}
+    // Default to system preference
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('htc_theme', theme);
+    } catch {}
+    // Add class to document element for global styling if needed
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -72,6 +91,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setAltitudeUnitState(unit);
     localStorage.setItem('htc_altitude_unit', unit);
   };
+
+  const setTheme = (t: 'light' | 'dark') => {
+    setThemeState(t);
+  };
+
+  const toggleTheme = () => setThemeState((prev) => (prev === 'light' ? 'dark' : 'light'));
 
   const toggleSaveTrek = (trekId: string) => {
     setSavedTrekIds((prev) => {
@@ -110,6 +135,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   return (
     <AppContext.Provider
       value={{
+        theme,
+        setTheme,
+        toggleTheme,
         currency,
         setCurrency,
         formatPrice,

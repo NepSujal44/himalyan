@@ -16,6 +16,7 @@ import { useApp } from '../context/AppContext';
 import { CurrencyCode, AltitudeUnit } from '../types';
 import { TREKS } from '../data/treks';
 import { SafeImage } from './SafeImage';
+import { ThemeToggle } from './ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -153,6 +154,7 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop Actions (Currency, Wishlist, Book CTA) */}
           <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             {/* Currency selector */}
             <div className="relative">
               <button
@@ -304,6 +306,11 @@ export const Navbar: React.FC = () => {
                     Feet (ft)
                   </button>
                 </div>
+              </div>
+
+              <div className="flex items-center justify-between text-xs text-stone-400 px-1">
+                <span>Theme:</span>
+                <ThemeToggle />
               </div>
 
               <Link
