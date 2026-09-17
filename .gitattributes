@@ -1,0 +1,7 @@
+# Treat TypeScript/TSX files as JavaScript for GitHub Linguist
+*.ts linguist-language=JavaScript
+*.tsx linguist-language=JavaScript
+
+# Optional: mark build outputs or vendored code if present (uncomment to use)
+#dist/** linguist-vendored
+#node_modules/** linguist-vendored
