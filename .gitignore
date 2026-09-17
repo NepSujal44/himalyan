@@ -1,8 +1,52 @@
+# Node
 node_modules/
-build/
+
+# Build outputs
 dist/
+build/
+/.vite
+
+# Production
 coverage/
-.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 *.log
-.env*
-!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+# Ignore local env files but keep any committed examples
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Cache
+.cache/
+.parcel-cache/
+.turbo/
+
+# Vercel / Netlify / build artifacts
+.vercel/
+.vercel_build_output/
+.netlify/
+
+# Misc
+server.js
+bun.lock
