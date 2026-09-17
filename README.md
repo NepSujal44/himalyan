@@ -1,48 +1,65 @@
+[![CI](https://github.com/NepSujal44/himalyan/actions/workflows/ci.yml/badge.svg)](https://github.com/NepSujal44/himalyan/actions)
+
 # Himalayan Trail Co. — Web UI
 
-Himalayan Trail Co. is a modern, responsive single-page application showcasing trekking trips, destinations, and booking flows for a Himalayan trek company. Built with React, Vite, Tailwind CSS and lightweight state in context, the app is a clean demo of a travel listing site with interactive features.
+Himalayan Trail Co. is a modern, responsive single-page application that showcases trekking trips, destinations, and a simple booking flow for a Himalayan trek operator. It’s built with React, Vite, TypeScript, and Tailwind CSS.
 
-Key features
-- Clean, responsive UI with accessible navigation and modals
-- Treks listing and detail pages with pricing and itinerary highlights
-- Save (wishlist) treks to local storage with an interactive drawer
-- Localized currency display and elevation units (meters/feet)
-- Booking form and simple booking persistence (local storage)
-- Light / dark theme toggle (persisted to local storage)
+Why this project
+- Designed to be a production-like demo of a travel listing site with an approachable codebase for contributors.
+- Focuses on accessibility, responsive design, and practical UI patterns (wishlist, currency selection, theme toggle).
 
-Tech stack
-- React + TypeScript + Vite
-- Tailwind CSS for styling
-- React Router for client-side routing
-- No server required — demo data lives in `src/data/treks.ts`
+Highlights
+- Clean, responsive UI with accessible navigation and drawers
+- Trek list and detail pages with pricing and itinerary highlights
+- Save (wishlist) treks persisted to local storage
+- Currency and elevation unit toggles
+- Light / dark theme with user preference persisted
 
-Getting started (development)
-
-1. Install dependencies
+Quick start
 
 ```bash
 npm install
+npm run dev
+# open http://localhost:3000
 ```
 
-2. Run the development server
+Build for production
 
 ```bash
-npm run dev
+npm run build
+npm run preview
 ```
 
-3. Open the app at the URL shown in the terminal (usually `https://himalyan-blush.vercel.app/`).
+Deployment
 
-Deployments
+- This repo is ready to deploy on Vercel. If your GitHub repo is connected to Vercel, pushes to `main` will auto-deploy.
+- Manual deploy via the Vercel CLI: `npx vercel --prod`.
 
-- This project is configured to deploy on Vercel out of the box. If your GitHub repo is connected to Vercel, pushing to `main` will trigger a new build and deploy.
-- You can also deploy manually using the Vercel CLI: `npx vercel --prod`.
+Screenshots
 
-Notes for contributors
-- The primary UI state is managed through `src/context/AppContext.tsx`.
-- Static demo data is stored in `src/data/treks.ts`.
-- Styling lives in `src/index.css` and Tailwind utility classes across components.
-- If you change language statistics on GitHub, a `.gitattributes` file is present to control Linguist settings.
+Add screenshots to the `assets/` folder and replace the examples below to showcase the UI in the README.
+
+![Home screenshot](assets/screenshot-home.png)
+![Trek detail screenshot](assets/screenshot-detail.png)
+
+Contributing
+
+Small, focused contributions are welcome. See `CONTRIBUTING.md` for the development workflow, how to run the project, and coding conventions.
+
+Code structure overview
+- `src/components/` — UI components and shared widgets
+- `src/pages/` — Route pages (Home, Trips, Booking, etc.)
+- `src/context/` — App-wide state (`AppContext`) and helpers
+- `src/data/treks.ts` — Demo dataset used by the site
+
+Package & metadata
+- Project metadata lives in `package.json` for clarity.
 
 License
 
-This repository is provided as-is for demonstration and learning purposes. Update this section with your chosen license.
+This project is licensed under the MIT License. See `LICENSE` for details.
+
+Contact
+
+Maintainer: Sujal (https://github.com/NepSujal44)
+
